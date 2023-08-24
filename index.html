@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nrCellId_Calculator</title>
+  <style>
+    input[type="number"] {
+      width: 40px; /* 調整輸入框寬度 */
+    }
+  </style>
+  <script>
+    function convertAndCalculate() {
+      // Get user inputs
+      var gNBIdLength = parseInt(document.getElementById("gNBIdLength").value);
+      var gNBId = parseInt(document.getElementById("gNBId").value);
+      var cellId = parseInt(document.getElementById("cellId").value);
+
+      // Convert gNBId and cellId to binary strings
+      var binaryGNBId = gNBId.toString(2).padStart(gNBIdLength, '0');
+      var binaryCellId = cellId.toString(2).padStart(36 - gNBIdLength, '0');
+
+      // Concatenate A and B to get C
+      var C = binaryGNBId + binaryCellId;
+
+      // Convert C to decimal and hexadecimal
+      var nrCellIdDecimal = parseInt(C, 2);
+      var nrCellIdHex = nrCellIdDecimal.toString(16).toUpperCase();
+      var nrCellIdBinary = C;
+
+      // Display results
+      document.getElementById("nrCellIdBinary").innerHTML = "nrCellId (Binary): " + nrCellIdBinary;
+      document.getElementById("nrCellIdHex").innerHTML = "nrCellId (Hexadecimal)●: 0x" + nrCellIdHex;
+
+      // Insert outputs into XML templates
+      var cuXml = `                    <gNBId>${gNBId}</gNBId>
+                    <gNBIdLength>${gNBIdLength}</gNBIdLength>
+                    <cellLocalId>${cellId}</cellLocalId>`;
+      
+      var duXml = `                    <gNBId>${gNBId}</gNBId>
+                    <gNBIdLength>${gNBIdLength}</gNBIdLength>
+                    <nrCellId>${nrCellIdHex}</nrCellId>
+                    <pdcchDmrsScramblingID>${cellId}</pdcchDmrsScramblingID>
+                    <pdschDataScramblingID>${cellId}</pdschDataScramblingID>
+                    <puschDataScramblingID>${cellId}</puschDataScramblingID>
+                    <cellId>${cellId}</cellId>
+                    <scramblingID0Dl>${cellId}</scramblingID0Dl>
+                    <scramblingID1Dl>${cellId}</scramblingID1Dl>
+                    <scramblingID0>${cellId}</scramblingID0>
+                    <scramblingID1>${cellId}</scramblingID1>
+                    <cellId>${cellId}</cellId>
+                    <nCI>${nrCellIdHex}</nCI>
+                    <nRPCI>${cellId}</nRPCI>`;
+
+      document.getElementById("cuXmlOutput").textContent = cuXml;
+      document.getElementById("duXmlOutput").textContent = duXml;
+    }
+  </script>
+</head>
+<body>
+  <h1>nrCellId_Calculator</h1>
+  <p style="margin: 0;">Author: Dustin_Chen, email: <a href="mailto:Dustin_Chen@compal.com" style="line-height: 1;">Dustin_Chen@compal.com</a> or <a href="mailto:chuhpsdustin@gmail.com" style="line-height: 1;">chuhpsdustin@gmail.com</a></p>  
+  <p>【Description】nrCellId has a total size of 36 bits. These 36 bits are constitute of gNBId + cellId. Please input (gNBIdLength, gNBId, cellId), then it will calculate the nrCellId. Fill in nrCellId(Hexadecimal) to du xml (nrCellId, nCI)</p>
+  <img src="https://www.techplayon.com/wp-content/uploads/2021/03/NCGI-1-730x355.png" alt="GitHub Image" width="500">
+  <br>
+  <label for="gNBIdLength">gNBIdLength: </label>
+  <input type="number" id="gNBIdLength" min="0" max="36"><br><br>
+
+  <label for="gNBId">gNBId : </label>
+  <input type="number" id="gNBId" min="0"><br><br>
+
+  <label for="cellId">cellId : </label>
+  <input type="number" id="cellId" min="0"><br><br>
+
+  <button onclick="convertAndCalculate()">Convert and Calculate</button>
+
+  <p id="nrCellIdBinary"></p>
+  <p id="nrCellIdHex"></p>
+
+  <h3>CU xml Output:</h3>
+  <pre id="cuXmlOutput"></pre>
+
+  <h3>DU xml Output:</h3>
+  <pre id="duXmlOutput"></pre>
+</body>
+</html>
