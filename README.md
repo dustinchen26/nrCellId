@@ -4,8 +4,10 @@ online calculate: https://dustinchen26.github.io/nrCellId
 ## Description & example
 ```
 【Description】
-nrCellId has a total size of 36 bits. These 36 bits are constitute of gNBId and cellId. 
-Please input gNBIdLength, gNBId, cellId, then it will calculate the nrCellId.
+nrCellId(36 bits) = gNBId + cellId. 
+Please enter (gNBIdLength, gNBId, cellId), 
+then it will calculate the nrCellId. 
+Fill in nrCellId(Hexadecimal) to du xml (nrCellId, nCI)
 
 【example】
 gNBIdLength: 22
