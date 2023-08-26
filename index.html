@@ -37,7 +37,7 @@
 
       // Convert C to decimal and hexadecimal
       var nrCellIdDecimal = parseInt(C, 2);
-      var nrCellIdHex = nrCellIdDecimal.toString(16).toUpperCase();
+      var nrCellIdHex = nrCellIdDecimal.toString(16).toUpperCase().padStart(9, '0'); // Pad to 9 characters
       var nrCellIdBinary = C;
 
       // Display results
@@ -87,22 +87,23 @@
   <p>Please enter (gNBIdLength, gNBId, cellId), then it will calculate the nrCellId. Fill in nrCellId(Hexadecimal) to du xml (nrCellId, nCI)</p>
   <img src="https://raw.githubusercontent.com/dustinchen26/nrCellId/master/picture.png" alt="GitHub Image" width="500">
   <br>
+  <p>example: gNBIdLength=22, gNBId=5, gNBId=1 => Calculate nrCellId = 14001</p>
   <!-- 將這幾行內容包裹在一個新的容器元素中，並設置其間距為0 -->
   <div class="input-group">
-    <label for="gNBIdLength">gNBIdLength: </label>
+    <label for="gNBIdLength">● gNBIdLength: </label>
     <input type="number" id="gNBIdLength" placeholder="DEC value" min="0" max="36">
   </div>
   
   <div class="input-group">
-    <label for="gNBId">gNBId : </label>
+    <label for="gNBId">● gNBId : </label>
     <input type="number" id="gNBId" placeholder="DEC value" min="0">
   </div>
   
   <div class="input-group">
-    <label for="cellId">cellId : </label>
+    <label for="cellId">● cellId : </label>
     <input type="number" id="cellId" placeholder="DEC value" min="0">
   </div>
-  <button onclick="convertAndCalculate()">Convert and Calculate</button>
+  <button onclick="convertAndCalculate()">Calculate</button>
 
   <p id="nrCellIdBinary"></p>
   <p id="nrCellIdHex"></p>
