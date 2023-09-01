@@ -77,13 +77,13 @@
   <h1>nrCellId_Calculator</h1>
   <p style="margin: 0;">Author: Dustin_Chen, email: <a href="mailto:Dustin_Chen@compal.com" style="line-height: 1;">Dustin_Chen@compal.com</a> or <a href="mailto:chuhpsdustin@gmail.com" style="line-height: 1;">chuhpsdustin@gmail.com</a></p>
   <br>
-  <p>ref: ETSI TS 128 541 / 29 571 / 38 413 / 38 300<br></p>
+  <p><b>【Reference】: ETSI TS 128 541 / 29 571 / 38 413 / 38 300</b><br></p>
   <p>&nbsp;&nbsp;(1) NR Cell Global Identifier (NCGI): used to identify NR cells globally. The <span class="colored">NCGI</span> is constructed from the <span class="colored">PLMN identity</span> the cell belongs to and the <span class="colored">NR Cell Identity(NCI)</span> of the cell.<br></p>  
   <p>&nbsp;&nbsp;(2) NR Cell Identity (<span class="colored">NrCellId</span>): BIT STRING <span class="colored">(SIZE(36))</span> <br></p>  
   <p>&nbsp;&nbsp;(3) gNB ID (<span class="colored">gNBId</span>): BIT STRING <span class="colored">(SIZE(22..32))</span>  <br></p>
   <p>&nbsp;&nbsp;(4) cellLocalId (cellId): The <span class="colored">NCI</span> can be constructed by encoding the gNB Identifier using <span class="colored">gNBId</span> and <span class="colored">cellLocalId</span> <br></p>
   <br>
-  <p>【Description】nrCellId(36 bits) = gNBId + cellId. <br></p>
+  <p><b>【Description】: nrCellId(36 bits) = gNBId + cellId. </b><br></p>
   <p>Please enter (gNBIdLength, gNBId, cellId), then it will calculate the nrCellId. Fill in nrCellId(Hexadecimal) to du xml (nrCellId, nCI)</p>
   <img src="https://raw.githubusercontent.com/dustinchen26/nrCellId/master/picture.png" alt="GitHub Image" width="500">
   <br>
@@ -91,17 +91,17 @@
   <!-- 將這幾行內容包裹在一個新的容器元素中，並設置其間距為0 -->
   <div class="input-group">
     <label for="gNBIdLength">● gNBIdLength: </label>
-    <input type="number" id="gNBIdLength" placeholder="DEC value" min="0" max="36">
+    <input type="number" id="gNBIdLength" value="22" placeholder="DEC value" min="0" max="36">
   </div>
   
   <div class="input-group">
     <label for="gNBId">● gNBId : </label>
-    <input type="number" id="gNBId" placeholder="DEC value" min="0">
+    <input type="number" id="gNBId" value="5" placeholder="DEC value" min="0">
   </div>
   
   <div class="input-group">
     <label for="cellId">● cellId : </label>
-    <input type="number" id="cellId" placeholder="DEC value" min="0">
+    <input type="number" id="cellId" value="1" placeholder="DEC value" min="0">
   </div>
   <button onclick="convertAndCalculate()">Calculate</button>
 
